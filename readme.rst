@@ -1,3 +1,9 @@
+ICS
+Inventory Control System
+
+
+
+
 *******************
 What is CodeIgniter
 *******************

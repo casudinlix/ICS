@@ -17,7 +17,8 @@
 								FAQ
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									<button data-toggle="modal" data-target="#addgroup"  class="btn btn-info">Add Group</button>
+									<button data-toggle="modal" data-target="#addgroup"  class="btn btn-app btn-yellow btn-xs"><i class="ace-icon glyphicon-plus"></i>
+</button>
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
