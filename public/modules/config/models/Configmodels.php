@@ -9,11 +9,20 @@ class Configmodels extends CI_Model{
     //Codeigniter : Write Less Do More
   }
   function getper(){
-    return $this->db->get_where('view_access_level',array('user_nip'=>$this->session->userdata('nip')))->result();
+$per=$this->router->fetch_class();
+$method1=$this->router->fetch_method();
+
+     $cek=$this->db->get_where('view_acces_level',array('user_nip'=>$this->session->userdata('nip')));
+
+return true;
+
+
+
   }
-  function getmenu(){
-    return $this->db->get_where('view_access_level',array('group_id'=>1,'is_main_menu'=>0,'active'=>1))->result();
-  }
+  function getmenu($id){
+    return $this->db->get_where('view_access_menu',array('user_nip'=>$id,'is_main_menu'=>0,'active'=>1))->result();
+
+}
   function getapp(){
     return $this->db->get('apps')->row();
   }

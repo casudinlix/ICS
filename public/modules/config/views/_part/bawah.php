@@ -103,7 +103,7 @@
                 // Isi nilai pada field
                 modal.find('#id').attr("value",div.data('id'));
                 modal.find('#group_name').attr("value",div.data('group_name'));
-                modal.find('#group_desc').val("value",div.data('group_desc'));
+                modal.find('#group_desc').val(div.data('group_desc'));
 
 
 

@@ -13,11 +13,10 @@
 
 					</div>
 <div class="page-header">
-							<h1>
-								FAQ
+
 								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									<button data-toggle="modal" data-target="#addgroup"  class="btn btn-app btn-yellow btn-xs"><i class="ace-icon glyphicon-plus"></i>
+
+									<button data-toggle="modal" data-target="#addgroup"  class="btn btn-app btn-blue btn-xs"><i class="ace-icon glyphicon-plus"></i>
 </button>
 								</small>
 							</h1>
@@ -81,7 +80,7 @@
 
 
 	              </div>
-	              <form class="form-horizontal" role="form" action="<?php echo site_url('aksi/updateprice')?>" method="post">
+	              <form class="form-horizontal" role="form" action="" method="post">
 
 
 
@@ -124,16 +123,12 @@
 
 	                <div class="clearfix form-actions">
 	                  <div class="col-md-offset-3 col-md-9">
-	                    <button class="btn btn-info" type="submit">
+	                    <button class="btn btn-info" type="submit" name="update">
 	                      <i class="ace-icon fa fa-check bigger-110"></i>
-	                      Submit
+	                      Update
 	                    </button>
 
-	                    &nbsp; &nbsp; &nbsp;
-	                    <button class="btn" type="reset">
-	                      <i class="ace-icon fa fa-undo bigger-110"></i>
-	                      Reset
-	                    </button>
+
 	                  </div>
 	                </div>
 	              </div>
@@ -164,7 +159,7 @@
 
 
 									</div>
-									<form class="form-horizontal" role="form" action="<?php echo site_url('aksi/updateprice')?>" method="post">
+									<form class="form-horizontal" role="form" action="" method="post">
 
 
 
@@ -184,7 +179,7 @@
 											<div class="form-group">
 
 												<div class="col-sm-9">
-								<input type="hidden" class="col-xs-10 col-sm-5" required="true" name="id" id="id">
+								<input type="hidden" class="col-xs-10 col-sm-5" required="true" name="id">
 
 												</div>
 											</div>
@@ -200,23 +195,20 @@
 												<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Group Desc </label>
 
 												<div class="col-sm-9">
-											<textarea class="col-xs-10 col-sm-5" required="true" name="desc" id="group_desc"></textarea>
+											<textarea class="col-xs-10 col-sm-5" required="true" name="desc"></textarea>
 
 												</div>
 											</div>
 
 										<div class="clearfix form-actions">
 											<div class="col-md-offset-3 col-md-9">
-												<button class="btn btn-info" type="submit">
-													<i class="ace-icon fa fa-check bigger-110"></i>
-													Submit
+												<button class="btn btn-info" type="submit" name="save">
+													<i class="ace-icon fa fa-floppy-o bigger-120"></i>
+													Save
 												</button>
 
-												&nbsp; &nbsp; &nbsp;
-												<button class="btn" type="reset">
-													<i class="ace-icon fa fa-undo bigger-110"></i>
-													Reset
-												</button>
+
+
 											</div>
 										</div>
 									</div>

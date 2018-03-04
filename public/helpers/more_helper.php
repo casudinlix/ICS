@@ -27,3 +27,6 @@ function checkperm(){
 
 	$this->db->get_where('view_access_level',$CI->session->userdata('login'));
 }
+function gede($data){
+	strtoupper($data);
+}

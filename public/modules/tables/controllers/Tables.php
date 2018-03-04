@@ -29,13 +29,15 @@ $this->load->model('usergroup', 'group');
   			$row[] = $field->group_name;
   			$row[] = $field->group_desc;
 
-  			$row[] = '<div class="btn-group">
+  			$row[] = '<div class="hidden-sm hidden-xs action-buttons">
+
+  				 <a href="#" data-toggle="modal" data-target="#editgroup"  data-id="'.$field->id.'" data-group_desc="'.$field->group_desc.'" data-group_name="'.$field->group_name.'" class="green" title="Edit">
+  				 		<i class="ace-icon fa fa-pencil bigger-150 blue"></i></a>
 
 
-  				 <a data-toggle="modal" data-target="#editgroup"  data-id="'.$field->id.'" data-group_desc="'.$field->group_desc.'" data-group_name="'.$field->group_name.'" class="btn btn-xs btn-info badge badge-transparent tooltip-error" title="Edit">
-  				 		<i class="menu-icon fa fa-pencil"></i>
-  				 	</a>
-                </div>';
+                   <a href="#" data-toggle="modal" data-target=""  data-id="'.$field->id.'" data-group_desc="'.$field->group_desc.'" data-group_name="'.$field->group_name.'" class="red" title="Edit Privillages">
+                      <i class="ace-icon fa fa-users bigger-150"></i></a></div>'
+                      ;
 
 
   			$data[] = $row;
