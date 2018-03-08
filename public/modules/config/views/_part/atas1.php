@@ -110,14 +110,21 @@
 <!-- /.Mulai Menu -->
 
 <ul class="nav nav-list">
+	<li class="">
+		<a href="<?php echo base_url('config/changewh')?>">
+			<i class="menu-icon fa fa-tachometer"></i>
+			<span class="menu-text"> Select Warehouse </span>
+		</a>
 
+		<b class="arrow"></b>
+	</li>
 
 <?php foreach ($main_menu as $main): ?>
 <?php $sub_menu= $this->db->get_where('view_access_menu',array('is_main_menu'=>$main->id));?>
 <?php if ($sub_menu->num_rows()>0): ?>
 	<!-- sub menu-->
 	<li class="">
-		<a href="<?php echo $main->link_menu?>" class="dropdown-toggle">
+		<a href="<?php echo site_url($main->link_menu)?>" class="dropdown-toggle">
 			<i class="menu-icon <?php echo $main->icon?>"></i>
 			<span class="menu-text">
 				<?php echo $main->menu_name ?>
@@ -133,7 +140,7 @@
 
 
 			<li class="">
-				<a href="<?php echo $sub->link_menu?>">
+				<a href="<?php echo site_url($sub->link_menu)?>">
 					<i class="menu-icon <?php echo $sub->icon?>"></i>
 <?php echo $sub->menu_name?>
 					<b class="arrow fa fa-angle-down"></b>
@@ -149,7 +156,7 @@
 	<!-- /.single Menu -->
 
 	<li class="">
-		<a href="<?php echo $main->link_menu?>">
+		<a href="<?php echo site_url($main->link_menu)?>">
 			<i class="menu-icon <?php echo $main->icon?>"></i>
 			<span class="menu-text"> <?php echo $main->menu_name?> </span>
 		</a>

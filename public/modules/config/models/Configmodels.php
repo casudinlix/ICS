@@ -12,9 +12,9 @@ class Configmodels extends CI_Model{
 $per=$this->router->fetch_class();
 $method1=$this->router->fetch_method();
 
-     $cek=$this->db->get_where('view_acces_level',array('user_nip'=>$this->session->userdata('nip')));
+return $this->db->get_where('view_roles',array('user_nip'=>$this->session->userdata('nip'),'a_view'=>1,'roles_module'=>$per,'roles_method'=>$method1));
 
-return true;
+
 
 
 

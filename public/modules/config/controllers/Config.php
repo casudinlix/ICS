@@ -56,18 +56,28 @@ $this->aksi->tambah('users_group',$data);
 $this->db->where('id', $this->input->post('id'));
 $this->aksi->ubah('users_group',$data);
 }
+$data['main_menu']=$this->configmodels->getmenu($this->session->userdata('nip'));
     $data['app']=$this->configmodels->getapp();
   $data['wh']=$this->configmodels->getwh($this->session->userdata('wh'));
-  $data['access']=$this->configmodels->getper();
-
+  $cek=$this->configmodels->getper()->result();
+  $per=$this->router->fetch_class();
+if ($cek==FALSE) {
+  redirect($per.'/error_404');
+}
   $this->load->view('_part/atas1', $data);
   $this->load->view('group/group', $data);
   $this->load->view('_part/bawah', $data);
 
 
   }
-function menu(){
-  $this->menu->all();
+function error_404(){
+  $data['main_menu']=$this->configmodels->getmenu($this->session->userdata('nip'));
+      $data['app']=$this->configmodels->getapp();
+    $data['wh']=$this->configmodels->getwh($this->session->userdata('wh'));
+
+    $this->load->view('_part/atas1', $data);
+    $this->load->view('_part/404', $data);
+    $this->load->view('_part/bawah', $data);
 }
 
 }
