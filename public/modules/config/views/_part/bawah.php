@@ -89,6 +89,46 @@
 								],
 
 						});
+						table = $('#roles').DataTable({
+
+								"processing": true,
+								"serverSide": true,
+								"order": [],
+
+								"ajax": {
+										"url": "<?php echo site_url('tables/getroles/')?>",
+										"type": "POST"
+								},
+
+
+								"columnDefs": [
+								{
+										"targets": [ 0 ],
+										"orderable": false,
+								},
+								],
+
+						});
+						table = $('#users').DataTable({
+
+								"processing": true,
+								"serverSide": true,
+								"order": [],
+
+								"ajax": {
+										"url": "<?php echo site_url('tables/getusers/')?>",
+										"type": "POST"
+								},
+
+
+								"columnDefs": [
+								{
+										"targets": [ 0 ],
+										"orderable": false,
+								},
+								],
+
+						});
 
 				});
 
@@ -109,7 +149,7 @@
 
             });
 
-            $('#propict').on('show.bs.modal', function (event) {
+            $('#editusers').on('show.bs.modal', function (event) {
                 var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
                 var modal          = $(this)
 

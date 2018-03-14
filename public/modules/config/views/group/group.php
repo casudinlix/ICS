@@ -16,8 +16,12 @@
 
 								<small>
 
-									<button data-toggle="modal" data-target="#addgroup"  class="btn btn-app btn-blue btn-xs"><i class="ace-icon glyphicon-plus"></i>
+<?php if ($a_add==null): ?>
+
+<?php else: ?>
+<button data-toggle="modal" data-target="#addgroup"  class="btn btn-app btn-blue btn-xs"><i class="ace-icon glyphicon-plus"></i>
 </button>
+<?php endif;?>
 								</small>
 							</h1>
 						</div><!-- /.page-header -->

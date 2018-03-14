@@ -43,11 +43,13 @@
                     <div class="col-sm-10 col-sm-offset-1">
                         <div class="login-container">
                             <div class="center">
-                                <h1>
-                                    <i class="ace-icon fa fa-leaf green"></i>
-                                    <span class="red"><?php echo $app->codename ?></span>
+                                <h3>
+
+                                    <span class="red"><?php echo $app->description ?></span><br/>
+
+                                  </br/>
                                     <span class="white" id="id-text2">Application</span>
-                                </h1>
+                                </h3>
                                 <h4 class="blue" id="id-company-text">&copy; Company Name</h4>
                             </div>
 
@@ -68,7 +70,7 @@
                                                 <fieldset>
                                                     <label class="block clearfix">
                                                         <span class="block input-icon input-icon-right">
-            <input type="text" class="form-control" placeholder="Username" name="code" />
+            <input type="text" class="form-control" placeholder="Nip" name="code" />
                                                             <i class="ace-icon fa fa-user"></i>
                                                         </span>
                                                     </label>

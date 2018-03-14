@@ -11,3 +11,6 @@ $route['translate_uri_dashes'] = FALSE;
 ////Enterprise
 //user Group
 $route['group'] = "config/usergroup";
+$route['roles'] = "config/roles";
+$route['403'] = "config/error_403";
+$route['users'] = "config/users";

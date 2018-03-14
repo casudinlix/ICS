@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usergroup extends CI_Model{
+class Users extends CI_Model{
 
-  var $table = 'users_group'; //nama tabel dari database
-	var $column_order = array('id','group_name','group_desc',''); //field yang ada di table user
-	var $column_search = array('group_name'); //field yang diizin untuk pencarian
+  var $table = 'view_usergroup'; //nama tabel dari database
+	var $column_order = array('id','user_nip','username','group_name',""); //field yang ada di table user
+	var $column_search = array('username'); //field yang diizin untuk pencarian
 	var $order = array('id' => 'asc'); // default order
 
 	public function __construct()

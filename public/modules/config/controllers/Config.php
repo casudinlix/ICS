@@ -59,10 +59,11 @@ $this->aksi->ubah('users_group',$data);
 $data['main_menu']=$this->configmodels->getmenu($this->session->userdata('nip'));
     $data['app']=$this->configmodels->getapp();
   $data['wh']=$this->configmodels->getwh($this->session->userdata('wh'));
+  $data['a_add']=$this->configmodels->getadd();
   $cek=$this->configmodels->getper()->result();
   $per=$this->router->fetch_class();
 if ($cek==FALSE) {
-  redirect($per.'/error_404');
+  redirect('403');
 }
   $this->load->view('_part/atas1', $data);
   $this->load->view('group/group', $data);
@@ -70,13 +71,45 @@ if ($cek==FALSE) {
 
 
   }
-function error_404(){
+function error_403(){
   $data['main_menu']=$this->configmodels->getmenu($this->session->userdata('nip'));
       $data['app']=$this->configmodels->getapp();
     $data['wh']=$this->configmodels->getwh($this->session->userdata('wh'));
 
     $this->load->view('_part/atas1', $data);
-    $this->load->view('_part/404', $data);
+    $this->load->view('_part/403', $data);
+    $this->load->view('_part/bawah', $data);
+}
+function roles(){
+  this_login();
+  $cek=$this->configmodels->getper()->result();
+  $per=$this->router->fetch_class();
+  if ($cek==FALSE) {
+  redirect('403');
+  }
+
+  $data['main_menu']=$this->configmodels->getmenu($this->session->userdata('nip'));
+      $data['app']=$this->configmodels->getapp();
+    $data['wh']=$this->configmodels->getwh($this->session->userdata('wh'));
+
+    $this->load->view('_part/atas1', $data);
+    $this->load->view('role/role', $data);
+    $this->load->view('_part/bawah', $data);
+}
+function users(){
+  this_login();
+  $cek=$this->configmodels->getper()->result();
+  $per=$this->router->fetch_class();
+  if ($cek==FALSE) {
+  redirect('403');
+  }
+$data['a_add']=$this->configmodels->getadd();
+  $data['main_menu']=$this->configmodels->getmenu($this->session->userdata('nip'));
+      $data['app']=$this->configmodels->getapp();
+    $data['wh']=$this->configmodels->getwh($this->session->userdata('wh'));
+
+    $this->load->view('_part/atas1', $data);
+    $this->load->view('users/users', $data);
     $this->load->view('_part/bawah', $data);
 }
 

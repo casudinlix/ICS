@@ -119,9 +119,13 @@
 		<b class="arrow"></b>
 	</li>
 
-<?php foreach ($main_menu as $main): ?>
-<?php $sub_menu= $this->db->get_where('view_access_menu',array('is_main_menu'=>$main->id));?>
-<?php if ($sub_menu->num_rows()>0): ?>
+<?php foreach ($main_menu as $main):
+	$this->db->order_by('menu_name ASC');?>
+<?php $sub_menu= $this->db->get_where('view_access_menu',array('is_main_menu'=>$main->id));
+
+?>
+<?php if ($sub_menu->num_rows()>0):
+	?>
 	<!-- sub menu-->
 	<li class="">
 		<a href="<?php echo site_url($main->link_menu)?>" class="dropdown-toggle">
@@ -143,7 +147,7 @@
 				<a href="<?php echo site_url($sub->link_menu)?>">
 					<i class="menu-icon <?php echo $sub->icon?>"></i>
 <?php echo $sub->menu_name?>
-					<b class="arrow fa fa-angle-down"></b>
+
 				</a>
 
 				<b class="arrow"></b>
@@ -154,7 +158,7 @@
 </ul>
 <?php else: ?>
 	<!-- /.single Menu -->
-
+<b class="arrow"></b>
 	<li class="">
 		<a href="<?php echo site_url($main->link_menu)?>">
 			<i class="menu-icon <?php echo $main->icon?>"></i>
