@@ -8,8 +8,24 @@ class Menu_model extends CI_Model{
     parent::__construct();
     //Codeigniter : Write Less Do More
   }
-public function all(){
-  return $this->db->get('menus')->result();
+public function all($level=0){
+
+	$this->db->select('*')
+        			->from('menus')
+        			->where('active', 1)
+        			->where('level',$level)
+        			->order_by('menu_name', 'ASC');
+  
+ 
+        
+        $query = $this->db->get();
+
+        
+            $result = $query->result();
+         
+
+        return $result;
+
 }
 
 }

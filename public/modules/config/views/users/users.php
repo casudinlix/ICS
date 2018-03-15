@@ -144,3 +144,84 @@
 						</div>
 					</div>
 				</div>
+
+
+<!---ini modal-->
+
+<div class="modal" id="editusers" class="modal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="blue bigger">Update User</h4>
+			</div>
+
+
+
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-5">
+						<div class="space"></div>
+
+
+					</div>
+					<form class="form-horizontal" role="form" action="" method="post">
+
+
+
+
+							<div class="space-4"></div>
+
+
+							<div class="space-4"></div>
+							<div class="form-group">
+
+								<div class="col-sm-9">
+				<input type="hidden" class="col-xs-10 col-sm-5" required="true" >
+
+								</div>
+							</div>
+							<div class="space-4"></div>
+							<div class="form-group">
+
+								<div class="col-sm-9">
+				<input type="hidden" class="col-xs-10 col-sm-5" required="true" name="id" id="id">
+
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> User Name </label>
+
+								<div class="col-sm-9">
+							<input type="text" class="col-xs-10 col-sm-5" required="true" name="nama" id="username">
+
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Group Desc </label>
+
+								<div class="col-sm-9">
+							<textarea class="col-xs-10 col-sm-5" required="true" name="desc" id="group_desc"></textarea>
+
+								</div>
+							</div>
+
+						<div class="clearfix form-actions">
+							<div class="col-md-offset-3 col-md-9">
+								<button class="btn btn-info" type="submit" name="update">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Update
+								</button>
+
+
+							</div>
+						</div>
+					</div>
+
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+	</div>

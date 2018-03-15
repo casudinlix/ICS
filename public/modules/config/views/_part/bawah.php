@@ -155,7 +155,7 @@
 
                 // Isi nilai pada field
                 modal.find('#id').attr("value",div.data('id'));
-                modal.find('#product_name').attr("value",div.data('product_name'));
+                modal.find('#username').attr("value",div.data('username'));
                 });
 
 								$('#addgroup').on('show.bs.modal', function (event) {

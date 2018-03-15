@@ -23,18 +23,16 @@ $this->load->model('configaksi', 'aksi');
 
   function index()
   {
-$cek=$this->configmodels->getper($this->session->userdata('nip'));
-if ($cek==TRUE) {
+ 
 
   $data['app']=$this->configmodels->getapp();
   $data['wh']=$this->configmodels->getwh($this->session->userdata('wh'));
-$data['main_menu']=$this->configmodels->getmenu($this->session->userdata('nip'));
+ 
+
   $this->load->view('_part/atas1', $data);
   $this->load->view('index', $data);
   $this->load->view('_part/bawah', $data);
-}else{
-  echo "BAD";
-}
+
 
   }
   function changewh(){

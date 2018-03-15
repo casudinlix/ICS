@@ -118,8 +118,60 @@
 
 		<b class="arrow"></b>
 	</li>
-<?php echo get_all_menu()?>
- 
+
+<?php foreach ($main_menu as $main):
+	$this->db->order_by('menu_name ASC');?>
+<?php $sub_menu= $this->db->get_where('view_access_menu',array('is_main_menu'=>$main->id));
+
+?>
+<?php if ($sub_menu->num_rows()>0):
+	?>
+	<!-- sub menu-->
+	<li class="">
+		<a href="<?php echo site_url($main->link_menu)?>" class="dropdown-toggle">
+			<i class="menu-icon <?php echo $main->icon?>"></i>
+			<span class="menu-text">
+				<?php echo $main->menu_name ?>
+			</span>
+
+			<b class="arrow fa fa-angle-down"></b>
+		</a>
+
+		<b class="arrow"></b>
+
+		<ul class="submenu">
+			<?php foreach ($sub_menu->result() as $sub): ?>
+
+
+			<li class="">
+				<a href="<?php echo site_url($sub->link_menu)?>">
+					<i class="menu-icon <?php echo $sub->icon?>"></i>
+<?php echo $sub->menu_name?>
+
+				</a>
+
+				<b class="arrow"></b>
+
+			</li>
+
+<?php endforeach; ?>
+</ul>
+<?php else: ?>
+	<!-- /.single Menu -->
+<b class="arrow"></b>
+	<li class="">
+		<a href="<?php echo site_url($main->link_menu)?>">
+			<i class="menu-icon <?php echo $main->icon?>"></i>
+			<span class="menu-text"> <?php echo $main->menu_name?> </span>
+		</a>
+
+		<b class="arrow"></b>
+	</li>
+	<!-- /.single Menu -->
+<?php endif; ?>
+
+<?php endforeach; ?>
+
 
 				<!-- /.nav-list -->
 

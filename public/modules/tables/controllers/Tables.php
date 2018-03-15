@@ -75,7 +75,7 @@ function getusers(){
 
       $row[] = '<div class="hidden-sm hidden-xs action-buttons">
 
-         <a href="#" data-toggle="modal" data-target="#editusers"  data-id="'.$field->id.'"  data-username="'.$field->username.'" class="green" title="Edit">
+         <a href="'.site_url('users/edit').'/'.$field->id.'" "'.$field->id.'" class="green" title="Edit">
             <i class="ace-icon fa fa-pencil bigger-150 blue"></i></a>
                  <a href="#" data-toggle="modal" data-target=""  data-id="'.$field->id.'"  data-group_name="'.$field->group_name.'" class="red" title="Edit Privillages">
       <i class="ace-icon fa fa-users bigger-150"></i></a></div>';
