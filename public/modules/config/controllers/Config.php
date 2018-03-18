@@ -12,11 +12,7 @@ class Config extends MX_Controller{
 $this->load->model('configmodels');
 $this->load->model('menu_model', 'menu');
 $this->load->model('configaksi', 'aksi');
-    if ($this->session->userdata('wh')!="1") {
-      //show_404();
-
-      redirect('dashboard');
-    }
+   
 
 
   }

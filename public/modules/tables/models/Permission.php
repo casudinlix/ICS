@@ -10,12 +10,15 @@ class Permission extends CI_Model{
 this_login();
 
   }
-  function getrole(){
+  function getrole($nip){
+    $this->db->select('id');
+    $this->db->where('user_nip',$nip);
+    $this->db->where('roles_module',$this->router->fetch_class());
+    $this->db->where('roles_method',$this->router->fetch_method());
+    $this->db->where('a_update',1);
+    return $this->db->get('view_role_access');
 
-$this->db->get_where('view_user_access',array('user_nip'=>$this->session->userdata('nip'),'a_edit'=>1));
 
-
-return ;
 
 
   }

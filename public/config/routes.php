@@ -10,7 +10,18 @@ $route['translate_uri_dashes'] = FALSE;
 
 ////Enterprise
 //user Group
-$route['group'] = "config/usergroup";
-$route['roles'] = "config/roles";
-$route['403'] = "config/error_403";
+//setting
+$route['dashboard/menus'] = "dashboard/config/menus";
+$route['dashboard/menus/add'] = "dashboard/config/menus/menuadd";
+$route['dashboard/menus/action']="dashboard/config/menus/action";
+
+$route['dashboard/tes'] = "dashboard/tes";
+
+$route['forbiden403'] = "dashboard/forbidden";
 $route['users'] = "config/users";
+
+//Untuk edit
+
+$route['dashboard/menus/edit/(:any)'] = "dashboard/config/menus/editmenu/$1";
+$route['(\w{2})/(:any)_(:num)'] = "home/viewProduct/$3";
+$route['shop-product_(:num)'] = "home/viewProduct/$3";

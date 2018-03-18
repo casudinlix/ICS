@@ -70,7 +70,7 @@
                                                 <fieldset>
                                                     <label class="block clearfix">
                                                         <span class="block input-icon input-icon-right">
-            <input type="text" class="form-control" placeholder="Nip" name="code" />
+            <input type="text" class="form-control" placeholder="Nip" name="code" autocomplete="off"/>
                                                             <i class="ace-icon fa fa-user"></i>
                                                         </span>
                                                     </label>

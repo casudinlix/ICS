@@ -33,44 +33,44 @@ function gede($data){
 function get_all_menu(){
 	$ci =& get_instance();
     $ci->load->model('model_menus','menus');
-    $menus = $ci->menus->get_list_menus($ci->session->role_id, 0, NULL);
-        
+    $menus = $ci->menus->get_list_menus($ci->session->nip, 0, NULL);
+
         $menu_list = '';
         foreach($menus as $m) {
             // level 0 as parent
-            $id = $m['id'];
+            $id = $m['menu_id'];
 
             // level 1
-            $menu1 = $ci->menus->get_list_menus($ci->session->role_id, 1, $id);
+            $menu1 = $ci->menus->get_list_menus($ci->session->nip, 1, $id);
             if(count($menu1) > 0) {
                 $menu_list .= '<li><a class="dropdown-toggle"><i class="fa '.$m['icon'].'"></i> '.$m['menu'].' <span></span><b class="arrow fa fa-angle-down"></b></a><b class="arrow"></b>';
                 $menu_list .= '<ul class="submenu">';
-                
+
                 foreach($menu1 as $m1) {
-                    $id = $m1['id'];
+                    $id = $m1['menu_id'];
 
                     // level 2
-                    $menu2 = $ci->menus->get_list_menus($ci->session->role_id, 2, $id);
+                    $menu2 = $ci->menus->get_list_menus($ci->session->nip, 2, $id);
                     if(count($menu2) > 0) {
-                        $menu_list .= '<li><a class="dropdown-toggle"><span class="menu-text">'.$m1['menu'].'</span><b class="arrow fa fa-angle-down"></b><i class="menu-icon fa fa-caret-right"></i></a><b class="arrow"></b>';
+                        $menu_list .= '<li><a class="dropdown-toggle"><span class="menu-text">'.$m1['menu'].'</span><b class="arrow fa fa-angle-down"></b><i class="menu-icon fa '.$m['icon'].'"></i></a><b class="arrow"></b>';
                         $menu_list .= '<ul class="submenu">';
                         foreach($menu2 as $m2) {
-                            $id = $m2['id'];
+                            $id = $m2['menu_id'];
 
                             // level 3
-                            $menu3 = $ci->menus->get_list_menus($ci->session->role_id, 3, $id);
+                            $menu3 = $ci->menus->get_list_menus($ci->session->nip, 3, $id);
                             if(count($menu3) > 0) {
-                                $menu_list .= '<li><a class="dropdown-toggle"><span class="menu-text">'.$m2['menu'].'</span><b class="arrow fa fa-angle-down"></b></a>';
+                                $menu_list .= '<li><a class="dropdown-toggle"><span class="menu-text">'.$m2['menu'].'</span><b class="arrow fa fa-angle-down"></b><i class="menu-icon fa '.$m['icon'].'"</a></i>';
                                 $menu_list .= '<ul class="submenu">';
                                 foreach($menu3 as $m3) {
                                     // $active = ($ci->uri->segment(1) == $m3['link']) ? 'class="active"':'';
-                                    $menu_list .= '<li><a href="'.base_url($m3['link']).'">'.$m3['menu'].'</a></li>';
+                                    $menu_list .= '<li><i class="menu-icon fa '.$m['icon'].'"</a></i><a href="'.base_url($m3['link']).'">'.$m3['menu'].'</a></li>';
                                 }
                                 $menu_list .= '</ul></li>';
                             } else {
                                 // $active = ($ci->uri->segment(1) == $m2['link']) ? 'class="active"':'';
                                 $menu_list .= '<li><a href="'.base_url($m2['link']).'">'.$m2['menu'].'</a></li>';
-                            }   
+                            }
                         }
                         $menu_list .= '</ul></li>';
                     } else {
@@ -86,6 +86,6 @@ function get_all_menu(){
 
             //dd($m['id']);
         }
-        
+
         return $menu_list;
 }

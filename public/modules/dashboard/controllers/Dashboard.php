@@ -9,19 +9,12 @@ class Dashboard extends MX_Controller{
     //Codeigniter : Write Less Do More
     $this->load->model('dashboardmodel');
 
-    if (!$this->session->userdata('wh')) {
-      $this->session->set_flashdata('whe','value');
-      redirect('home');
-    }
+
 if (!$this->session->userdata('login')) {
   $this->session->set_flashdata('error','value');
   redirect('welcome');
 }
-if($this->session->userdata('wh')=="1"){
 
-redirect('config','refresh');
-
-}
   }
 
   function index()
@@ -29,7 +22,7 @@ redirect('config','refresh');
 
 
 $data['app']=$this->dashboardmodel->getapp();
-$data['wh']=$this->dashboardmodel->getwh($this->session->userdata('wh'));
+
 $this->load->view('_part/atas', $data);
 $this->load->view('index', $data);
 $this->load->view('_part/bawah', $data);
@@ -41,6 +34,12 @@ $this->session->unset_userdata($wh);
 unset($_SESSION['wh']);
 
 redirect('home');
+
+  }
+  function out(){
+
+    $this->session->sess_destroy();
+    redirect('welcome');
 
   }
 

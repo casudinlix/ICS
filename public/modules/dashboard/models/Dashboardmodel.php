@@ -11,8 +11,13 @@ class Dashboardmodel extends CI_Model{
   function getapp(){
     return $this->db->get('apps')->row();
   }
-  function getwh($wh){
-    return $this->db->get_where('WH',array('id'=>$wh))->row();
+  function menulist(){
+    return $this->db->get('menus')->result();
+  }
+  function get_level_menu($parent){
+    $result = $this->db->get_where('menus',array('id' => $parent))->row_array();
+
+		return $result['level'] + 1;
   }
 
 }

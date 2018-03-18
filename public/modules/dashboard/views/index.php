@@ -4,7 +4,7 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#"><?php echo $wh->wh_name ?></a>
+								<a href="#">Dashboard</a>
 							</li>
 
 
@@ -24,7 +24,7 @@
 								FAQ
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									frequently asked questions using tabs and accordions
+									<?php echo var_dump($this->session->userdata()) ?>
 								</small>
 							</h1>
 						</div><!-- /.page-header -->

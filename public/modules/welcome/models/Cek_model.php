@@ -21,5 +21,18 @@ function getwh($wh){
   return $this->db->get_where('view_wh_perm',array('users_login_id'=>$wh))->result();
 
 }
+function access($nip){
+	return $this->db->get_where('view_privileges', array('user_nip'=>$nip));
+
+
+
+}
+function getroles($nip){
+  $this->db->select('id');
+  $this->db->where('user_nip',$nip);
+return $this->db->get('view_role_access')->result();
+
+
+}
 
 }

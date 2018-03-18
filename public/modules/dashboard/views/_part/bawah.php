@@ -61,10 +61,155 @@
     <script src="<?php echo tema()?>js/buttons.colVis.min.js"></script>
     <script src="<?php echo tema()?>js/dataTables.select.min.js"></script>
      <script src="<?php echo tema()?>alert/alertify.min.js"></script>
+		 <script src="<?php echo tema()?>alert/sweetalert.min.js"></script>
       <script src="<?php echo tema()?>js/select2.min.js"></script>
     <!-- ace scripts -->
- 
+<script>
+	jQuery(function($) {
+		$('[data-rel=tooltip]').tooltip();
+				$('[data-rel=popover]').popover({html:true});
 
-		<!-- inline scripts related to this page -->
+	});
+
+</script>
+		<script type="text/javascript">
+				var table;
+				$(document).ready(function() {
+
+						//datatables
+						table = $('#datatables').DataTable({});
+
+						table = $('#usergroup').DataTable({
+
+								"processing": true,
+								"serverSide": true,
+								"order": [],
+
+								"ajax": {
+										"url": "<?php echo site_url('tables/getusergroup/')?>",
+										"type": "POST"
+								},
+
+
+								"columnDefs": [
+								{
+										"targets": [ 0 ],
+										"orderable": false,
+								},
+								],
+
+						});
+						table = $('#getmenu').DataTable({
+
+								"processing": true,
+								"serverSide": true,
+								"order": [],
+
+								"ajax": {
+										"url": "<?php echo site_url('tables/getmenu/')?>",
+										"type": "POST"
+								},
+
+
+								"columnDefs": [
+								{
+										"targets": [ 0 ],
+										"orderable": false,
+								},
+								],
+
+						});
+						table = $('#roles').DataTable({
+
+								"processing": true,
+								"serverSide": true,
+								"order": [],
+
+								"ajax": {
+										"url": "<?php echo site_url('tables/getroles/')?>",
+										"type": "POST"
+								},
+
+
+								"columnDefs": [
+								{
+										"targets": [ 0 ],
+										"orderable": false,
+								},
+								],
+
+						});
+						table = $('#users').DataTable({
+
+								"processing": true,
+								"serverSide": true,
+								"order": [],
+
+								"ajax": {
+										"url": "<?php echo site_url('tables/getusers/')?>",
+										"type": "POST"
+								},
+
+
+								"columnDefs": [
+								{
+										"targets": [ 0 ],
+										"orderable": false,
+								},
+								],
+
+						});
+
+				});
+
+		</script>
+		<?php if ($this->session->flashdata('susscess')): ?>
+			<script>
+				swal("Data Has ben success Saved!", "You clicked the button!", "success")
+			</script>
+		<?php endif; ?>
+
+		<script>
+        $(document).ready(function() {
+            // Untuk sunting
+            $('#editgroup').on('show.bs.modal', function (event) {
+                var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+                var modal          = $(this)
+
+                // Isi nilai pada field
+                modal.find('#id').attr("value",div.data('id'));
+                modal.find('#group_name').attr("value",div.data('group_name'));
+                modal.find('#group_desc').val(div.data('group_desc'));
+
+
+
+            });
+
+            $('#editusers').on('show.bs.modal', function (event) {
+                var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+                var modal          = $(this)
+
+                // Isi nilai pada field
+                modal.find('#id').attr("value",div.data('id'));
+                modal.find('#username').attr("value",div.data('username'));
+                });
+
+								$('#addgroup').on('show.bs.modal', function (event) {
+		                var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+		                var modal          = $(this)
+		                });
+                //select2
+                $("#parent").select2({
+                 placeholder: 'Choose a Parent...',
+                 allowClear: true
+                });
+
+                $("#brand").select2({
+                 placeholder: 'Choose a Brand...',
+                 allowClear: true
+                });
+
+        });
+    </script>
 	</body>
 </html>
