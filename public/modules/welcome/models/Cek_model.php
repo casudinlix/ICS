@@ -17,10 +17,7 @@ function cek($code,$pass){
 
 
 }
-function getwh($wh){
-  return $this->db->get_where('view_wh_perm',array('users_login_id'=>$wh))->result();
-
-}
+ 
 function access($nip){
 	return $this->db->get_where('view_privileges', array('user_nip'=>$nip));
 

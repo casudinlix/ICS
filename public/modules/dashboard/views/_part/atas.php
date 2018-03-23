@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title><?php echo $app->codename ?></title>
+		<title><?php echo $app->codename ?>||<?php echo $title ?></title>
 
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -114,7 +114,7 @@
 	<li class="">
 		<a href="#">
 			<i class="menu-icon fa fa-user"></i>
-			<span class="menu-text"> <?php echo $this->session->userdata('username')?> </span>
+			<span class="menu-text"> <?php echo $this->session->userdata('username')?>(<?php echo $this->session->userdata('nip')?>) </span>
 		</a>
 
 		<b class="arrow"></b>

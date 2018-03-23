@@ -20,6 +20,7 @@ $access=$this->access->getaccessview($this->session->userdata('nip'))->result();
 if ($access==FALSE) {
 	redirect('forbiden403');
 }
+$data['title']="Menu List";
 $data['app']=$this->dashboardmodel->getapp();
 	$data['list_menus']=$this->menu->get_all();
 $data['add']=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
@@ -36,15 +37,17 @@ $data['menulist']=$this->dashboardmodel->menulist();
 		if ($access==FALSE) {
 			redirect('forbiden403');
 		}
+		$data['title']="Edit Menu";
 		$id=base64_decode($this->uri->segment(4));
 		$data['app']=$this->dashboardmodel->getapp();
 		$data['menulist']=$this->dashboardmodel->menulist();
 		$data['q']=$this->db->get_where('menus',['id'=>$id])->row();
 		$cek=$this->db->get_where('menus',['id'=>$id])->result();
 		foreach ($cek as $key) {
-			$idm=$key->parent;
+			$idm=$key->id;
 		}
 		$data['parent']=$this->db->get_where('menus',['id'=>$idm])->row();
+
 		$this->load->view('_part/atas', $data);
 		$this->load->view('config/menu/edit', $data);
 		$this->load->view('_part/bawah', $data);
@@ -56,6 +59,7 @@ $data['menulist']=$this->dashboardmodel->menulist();
 		if ($access==FALSE) {
 			redirect('forbiden403');
 		}
+		$data['title']="Add Menu";
 		$data['app']=$this->dashboardmodel->getapp();
 			$data['list_menus']=$this->menu->get_all();
 		$data['module']=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
@@ -83,6 +87,7 @@ $data['menulist']=$this->dashboardmodel->menulist();
 				'link'			=> $this->input->post('link'),
 				'is_published'	=> 1,
 				'menu_order'	=> $this->input->post('order'),
+
 
 			];
 			$parent=$this->input->post('parent');
@@ -117,7 +122,45 @@ redirect('dashboard/menus');
 
 		}
 		if (isset($_POST['editmenu'])) {
-			var_dump($POST);
+			$this->db->trans_begin();
+
+			$value = [
+				'menu'			=> $this->input->post('menu'),
+				'parent'		=> $this->input->post('parent'),
+				'link'			=> $this->input->post('link'),
+				'is_published'	=> 1,
+				'menu_order'	=> $this->input->post('menu_order'),
+			];
+
+			$parent = $this->input->post('parent');
+
+			if($parent == 0) {
+				$value['level'] = 0;
+				$value['icon'] 	= $this->input->post('icon');
+			} else {
+				$value['level'] = $this->m_menus->get_level_menu($parent);
+				$value['icon']	= NULL;
+			}
+
+			$data_menu = $value;
+			$id = $this->input->post('id');
+
+			$this->global->update('menus', $data_menu, ['id' => $id]);
+
+
+			if ($this->db->trans_status() === FALSE) {
+	            $this->db->trans_rollback();
+							$this->session->set_flashdata('error','error');
+							redirect('dashboard/menus');
+
+	        } else {
+	        	$this->db->trans_commit();
+
+	        }
+					$this->session->set_flashdata('susscess','success');
+					redirect('dashboard/menus');
+exit();
+
 		}
 
 	}

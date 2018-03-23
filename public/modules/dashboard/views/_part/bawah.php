@@ -72,6 +72,17 @@
 	});
 
 </script>
+<script>
+function angka(evt) {
+	var charCode = (evt.which) ? evt.which : event.keyCode
+	if (charCode > 31 && (charCode < 48 || charCode > 57))
+
+	return false;
+	return true;
+}
+
+
+</script>
 		<script type="text/javascript">
 				var table;
 				$(document).ready(function() {
@@ -79,93 +90,20 @@
 						//datatables
 						table = $('#datatables').DataTable({});
 
-						table = $('#usergroup').DataTable({
-
-								"processing": true,
-								"serverSide": true,
-								"order": [],
-
-								"ajax": {
-										"url": "<?php echo site_url('tables/getusergroup/')?>",
-										"type": "POST"
-								},
-
-
-								"columnDefs": [
-								{
-										"targets": [ 0 ],
-										"orderable": false,
-								},
-								],
-
-						});
-						table = $('#getmenu').DataTable({
-
-								"processing": true,
-								"serverSide": true,
-								"order": [],
-
-								"ajax": {
-										"url": "<?php echo site_url('tables/getmenu/')?>",
-										"type": "POST"
-								},
-
-
-								"columnDefs": [
-								{
-										"targets": [ 0 ],
-										"orderable": false,
-								},
-								],
-
-						});
-						table = $('#roles').DataTable({
-
-								"processing": true,
-								"serverSide": true,
-								"order": [],
-
-								"ajax": {
-										"url": "<?php echo site_url('tables/getroles/')?>",
-										"type": "POST"
-								},
-
-
-								"columnDefs": [
-								{
-										"targets": [ 0 ],
-										"orderable": false,
-								},
-								],
-
-						});
-						table = $('#users').DataTable({
-
-								"processing": true,
-								"serverSide": true,
-								"order": [],
-
-								"ajax": {
-										"url": "<?php echo site_url('tables/getusers/')?>",
-										"type": "POST"
-								},
-
-
-								"columnDefs": [
-								{
-										"targets": [ 0 ],
-										"orderable": false,
-								},
-								],
-
-						});
-
 				});
 
 		</script>
 		<?php if ($this->session->flashdata('susscess')): ?>
 			<script>
-				swal("Data Has ben success Saved!", "You clicked the button!", "success")
+				swal("Data Has ben success Saved!", "Clicked the button!", "success")
+			</script>
+		<?php endif; ?>
+
+		<script>
+		</script>
+		<?php if ($this->session->flashdata('error')): ?>
+			<script>
+				swal(":( Not Allowed!", "Clicked the button!", "error")
 			</script>
 		<?php endif; ?>
 
@@ -204,8 +142,8 @@
                  allowClear: true
                 });
 
-                $("#brand").select2({
-                 placeholder: 'Choose a Brand...',
+                $("#user").select2({
+                 placeholder: 'Choose a Group...',
                  allowClear: true
                 });
 

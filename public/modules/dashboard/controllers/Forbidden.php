@@ -12,6 +12,7 @@ class Forbidden extends MX_Controller{
 
   function index()
   {
+    $data['title']="Forbidden!!!";
     $data['app']=$this->dashboardmodel->getapp();
     $this->load->view('_part/atas',$data);
 $this->load->view('_part/403');

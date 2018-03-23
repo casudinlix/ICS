@@ -8,7 +8,7 @@ class Welcome extends MX_Controller {
   {
     parent::__construct();
 if ($this->session->userdata('login')) {
-	redirect('home');
+	redirect('dashboard');
 }
 
   }
@@ -42,7 +42,7 @@ if ($access->num_rows()>0) {
 	$sesi['login']=TRUE;
 	$sesi['id']=$key->id;
 	$sesi['nip']=$key->user_nip;
-	$sesi['role_id']=$value->role_id;
+	$sesi['group_id']=$value->group_id;
 	$sesi['username']=$key->username;
 
 

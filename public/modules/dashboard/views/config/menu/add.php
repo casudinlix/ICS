@@ -109,10 +109,14 @@
         </button>
 
         &nbsp; &nbsp; &nbsp;
-        <button class="btn" type="reset">
-          <i class="ace-icon fa fa-undo bigger-110"></i>
-          Reset
-        </button>
+				 
+					<a href="javascript:history.back()" class="btn btn-grey">
+						<i class="ace-icon fa fa-arrow-left"></i>
+						Go Back
+					</a>
+
+
+
       </div>
     </div>
 </form>

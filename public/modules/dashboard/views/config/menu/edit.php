@@ -39,6 +39,7 @@
         <input type="text" value="<?php echo $q->menu?>" placeholder="Name" name="menu" required="true" class="col-xs-10 col-sm-5" />
       </div>
     </div>
+<input type="hidden" name="id" value="<?php echo base64_decode($this->uri->segment(4))?>">
 
     <div class="form-group">
       <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Link / URL </label>
@@ -55,7 +56,12 @@
 
       <div class="col-sm-9">
 <select id="parent"  class="col-xs-10 col-sm-5" name="parent" required="">
+	<?php if ($parent->id!=0): ?>
+		<option value="0">No Parent/ Root Menu</option>
+	<?php endif; ?>
   <option value="<?php echo $parent->id?>"><?php echo $parent->id." ".$parent->menu?></option>
+
+
 <option value="0">No Parent/ Root Menu</option>
 <?php foreach ($menulist as $key): ?>
 <option value="<?php echo $key->id?>"><?php echo $key->id." ".$key->menu ?></option>
@@ -109,10 +115,10 @@
         </button>
 
         &nbsp; &nbsp; &nbsp;
-        <button class="btn" type="reset">
-          <i class="ace-icon fa fa-undo bigger-110"></i>
-          Reset
-        </button>
+				<a href="javascript:history.back()" class="btn btn-grey">
+          <i class="ace-icon fa fa-arrow-left"></i>
+          Go Back
+        </a>
       </div>
     </div>
 </form>

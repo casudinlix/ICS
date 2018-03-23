@@ -19,5 +19,11 @@ class Dashboardmodel extends CI_Model{
 
 		return $result['level'] + 1;
   }
+  function getusers(){
+    return $this->db->get('view_users')->result();
+  }
+  function getgroup(){
+    return $this->db->get('users_group')->result();
+  }
 
 }
