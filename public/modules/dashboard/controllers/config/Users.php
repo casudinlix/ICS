@@ -7,11 +7,13 @@ class Users extends MX_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
-    this_login();
+    if (this_login()==false) {
+      redirect('welcome');
+    }
     $this->load->model('m_menus','menu');
 		$this->load->model('dashboardmodel');
 		$this->load->model('access', 'access');
-		$this->load->model('action', 'crud');
+
   }
 
   function index()

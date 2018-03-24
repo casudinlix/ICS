@@ -20,7 +20,7 @@ if (!$this->session->userdata('login')) {
   function index()
   {
 
-
+$data['title']="Home";
 $data['app']=$this->dashboardmodel->getapp();
 
 $this->load->view('_part/atas', $data);

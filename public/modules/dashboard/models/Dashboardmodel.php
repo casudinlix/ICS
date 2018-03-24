@@ -25,5 +25,8 @@ class Dashboardmodel extends CI_Model{
   function getgroup(){
     return $this->db->get('users_group')->result();
   }
+  function get_roles(){
+    return $this->db->get('roles')->result();
+  }
 
 }

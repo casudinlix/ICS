@@ -7,11 +7,17 @@ class Forbidden extends MX_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+
+    if (this_login()==FALSE) {
+      redirect('welcome');
+    }
     $this->load->model('dashboardmodel');
+
   }
 
   function index()
   {
+
     $data['title']="Forbidden!!!";
     $data['app']=$this->dashboardmodel->getapp();
     $this->load->view('_part/atas',$data);

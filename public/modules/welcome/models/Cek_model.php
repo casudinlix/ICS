@@ -17,7 +17,7 @@ function cek($code,$pass){
 
 
 }
- 
+
 function access($nip){
 	return $this->db->get_where('view_privileges', array('user_nip'=>$nip));
 
@@ -25,7 +25,7 @@ function access($nip){
 
 }
 function getroles($nip){
-  $this->db->select('id');
+  $this->db->select('role_id');
   $this->db->where('user_nip',$nip);
 return $this->db->get('view_role_access')->result();
 

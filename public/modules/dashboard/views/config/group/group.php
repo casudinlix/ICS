@@ -13,7 +13,7 @@
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
-							
+
 						</div><!-- /.nav-search -->
 					</div>
 <div class="page-header">
@@ -22,7 +22,7 @@
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 								<?php if ($add==TRUE): ?>
-								<a href="<?php echo site_url('dashboard/menus/add')?>">	<button class="btn btn-white btn-info btn-bold" data-rel="tooltip" data-placement="right" title="New menu">
+								<a href="<?php echo site_url('dashboard/group/add')?>">	<button class="btn btn-white btn-info btn-bold" data-rel="tooltip" data-placement="right" title="New Group">
 				 												<i class="ace-icon fa fa-plus align-top bigger-125 blue" ></i>
 				 												New
 				 											</button></a>
@@ -47,14 +47,12 @@
 
 
 
-<th class="hidden-480"><i class="ace-icon fa fa-barcode hidden-480"></i>Manu Name</th>
+<th class="hidden-480"><i class="ace-icon glyphicon glyphicon-barcode hidden-480"></i>Group Name</th>
 
-<th>Link</th>
-												<th>
-<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-						Icon
-												</th>
-												<th>Publish</th>
+<th><i class="ace-icon glyphicon glyphicon-user hidden-480"></i>Desc</th>
+
+<th><i class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>Add Date</th>
+<th>Add By</th>
 												<th>Ops</th>
 											</tr>
 										</thead>
@@ -62,25 +60,24 @@
 										<tbody>
 											<tr>
 	 <?php $no=1;
-	 foreach ($menulist as $key): ?>
+	 foreach ($group as $key): ?>
 <td colspan=""><?php  echo $no++ ?></td>
-<td colspan=""><?php  echo $key->menu ?></td>
-<td colspan=""><?php  echo $key->link ?></td>
-<td colspan=""><i class="fa <?php  echo $key->icon ?>"></i></td>
-<?php if ($key->is_publish=1): ?>
-<td colspan="">YES</td>
-<?php else: ?>
-<td colspan="">NO</td>
-<?php endif;?>
+<td colspan=""><?php  echo $key->group_name ?></td>
+<td colspan=""><?php  echo $key->group_desc ?></td>
+
+<td colspan=""><?php  echo $key->adddate ?></td>
+<td colspan=""><?php  echo $key->addBy ?></td>
 <?php if ($module==TRUE): ?>
+
 <td colspan="">
 	<div class="hidden-sm hidden-xs action-buttons">
 
-		 <a href="<?php echo site_url('dashboard/menus/edit/').base64_encode($key->id)?>"  class=" tooltip-warning" data-rel="tooltip" data-placement="right" title="Edit Menu">
-				 <button class="btn btn-white btn-info btn-bold">
-												<i class="ace-icon fa fa-pencil align-top bigger-125 blue"></i>
-												Edit
-											</button></a>
+  <a href="<?php echo site_url('dashboard/group/edit/').base64_encode($key->id)?>"  class=" tooltip-warning" data-rel="tooltip" data-placement="right" title="Edit">
+  <button class="btn btn-white btn-info btn-bold">
+  <i class="ace-icon fa fa-pencil align-top bigger-125 blue"></i>
+
+       </button></a>
+
 
 </td>
 <?php else:?>
