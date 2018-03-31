@@ -5,8 +5,10 @@ class Menus extends MX_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+if (!this_login()) {
+	redirect('welcome');
+}
 
-		this_login();
 
 		$this->load->model('m_menus','menu');
 		$this->load->model('dashboardmodel');
@@ -138,7 +140,7 @@ redirect('dashboard/menus');
 				$value['level'] = 0;
 				$value['icon'] 	= $this->input->post('icon');
 			} else {
-				$value['level'] = $this->m_menus->get_level_menu($parent);
+				$value['level'] = $this->dashboardmodel->get_level_menu($parent);
 				$value['icon']	= NULL;
 			}
 

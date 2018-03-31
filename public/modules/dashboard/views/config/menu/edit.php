@@ -56,11 +56,14 @@
 
       <div class="col-sm-9">
 <select id="parent"  class="col-xs-10 col-sm-5" name="parent" required="">
-	<?php if ($parent->id!=0): ?>
+	<?php if ($parent->parent=="0"): ?>
 		<option value="0">No Parent/ Root Menu</option>
-	<?php endif; ?>
-  <option value="<?php echo $parent->id?>"><?php echo $parent->id." ".$parent->menu?></option>
+	<?php else: ?>
+	<?php $parentname=$this->db->get_where('menus',['id'=>$parent->parent])->row();
+	   ?>
 
+  <option value="<?php echo $parent->parent?>"><?php echo $parent->parent." ".$parentname->menu?></option>
+<?php endif;?>
 
 <option value="0">No Parent/ Root Menu</option>
 <?php foreach ($menulist as $key): ?>
