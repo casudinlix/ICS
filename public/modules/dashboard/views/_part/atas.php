@@ -11,6 +11,12 @@
 <link rel="stylesheet" href="<?php echo tema()?>alert/css/alertify.min.css" />
 <link rel="stylesheet" href="<?php echo tema()?>alert/sweetalert.css" />
 <link rel="stylesheet" href="<?php echo tema()?>css/select2.min.css" />
+<!-- lookup -->
+<link href='<?php echo tema();?>auto/css/jquery.autocomplete.css' rel='stylesheet' />
+<script src="<?php echo tema();?>auto/js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo tema();?>auto/css/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo tema();?>auto/css/lookupbox.css" />
+
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo tema()?>css/bootstrap.min.css" />
 		<link rel="stylesheet" href="<?php echo tema()?>font-awesome/4.5.0/css/font-awesome.min.css" />
@@ -19,6 +25,7 @@
 
 		<!-- ace styles -->
 		<link rel="stylesheet" href="<?php echo tema()?>css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="<?php echo tema()?>css/bootstrap-duallistbox.min.css"/>
 
 
 		<!--[if lte IE 9]>
@@ -58,9 +65,9 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="index.html" class="navbar-brand">
+					<a href="<?php echo site_url()?>" class="navbar-brand">
 						<small>
-							<i class="fa fa-leaf"></i>
+							<i class="fa fa-desktop"></i>
 							<?php echo $app->codename ?>
 						</small>
 					</a>
@@ -92,6 +99,72 @@
 						<button class="btn btn-warning">
 							<i class="ace-icon fa fa-users"></i>
 						</button>
+						<div class="ace-settings-container" id="ace-settings-container">
+							<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+								<i class="ace-icon fa fa-cog bigger-130"></i>
+							</div>
+
+							<div class="ace-settings-box clearfix" id="ace-settings-box">
+								<div class="pull-left width-50">
+									<div class="ace-settings-item">
+										<div class="pull-left">
+											<select id="skin-colorpicker" class="hide">
+												<option data-skin="no-skin" value="#438EB9">#438EB9</option>
+												<option data-skin="skin-1" value="#222A2D">#222A2D</option>
+												<option data-skin="skin-2" value="#C6487E">#C6487E</option>
+												<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+											</select>
+										</div>
+										<span>&nbsp; Choose Skin</span>
+									</div>
+
+									<div class="ace-settings-item">
+										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
+										<label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+									</div>
+
+									<div class="ace-settings-item">
+										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
+										<label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+									</div>
+
+									<div class="ace-settings-item">
+										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
+										<label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+									</div>
+
+									<div class="ace-settings-item">
+										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
+										<label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+									</div>
+
+									<div class="ace-settings-item">
+										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off" />
+										<label class="lbl" for="ace-settings-add-container">
+											Inside
+											<b>.container</b>
+										</label>
+									</div>
+								</div><!-- /.pull-left -->
+
+								<div class="pull-left width-50">
+									<div class="ace-settings-item">
+										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
+										<label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+									</div>
+
+									<div class="ace-settings-item">
+										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
+										<label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+									</div>
+
+									<div class="ace-settings-item">
+										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off" />
+										<label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+									</div>
+								</div><!-- /.pull-left -->
+							</div><!-- /.ace-settings-box -->
+						</div><!-- /.ace-settings-container -->
 
 						<button class="btn btn-danger badge badge-transparent tooltip-error" title="Logout">
 							<a href="<?php echo site_url('dashboard/out')?>"><i class="ace-icon fa fa-power-off"></i></a>

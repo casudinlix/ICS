@@ -38,5 +38,13 @@ return $this->db->get('view_role_access');
     $this->db->where('a_create',1);
     return $this->db->get('view_role_access');
   }
+  function getaccessdelete($nip){
+    $this->db->select('role_id');
+    $this->db->where('user_nip',$nip);
+    $this->db->where('roles_module',$this->router->fetch_class());
+    $this->db->where('roles_method',$this->router->fetch_method());
+    $this->db->where('a_delete',1);
+    return $this->db->get('view_role_access');
+  }
 
 }

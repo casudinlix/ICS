@@ -42,5 +42,25 @@ redirect('home');
     redirect('welcome');
 
   }
+  function getusersall(){
+    $id=$this->uri->segment(3);
+      //$this->db->select('sift_name, jam_in,jam_out');
+       //$this->db->like();gaji
+$data=$this->db->select('id,user_nip,username,group_name,group_id');
+$this->db->like('user_nip',$id);
+$this->db->or_like('username', $id);
+          $data =$this->db->get('view_users');
+          $rows = array();
+          foreach($data->result() as $row)
+          {
+            $rows[]=$row;
+          }
+
+          echo json_encode($rows);
+  }
+function ajaxtes(){
+
+  json_encode($_POST) ;
+}
 
 }

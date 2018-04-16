@@ -8,12 +8,18 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-////Enterprise
-//user Group
-//setting
+//Permission
+$route['dashboard/utility/menu'] =  "dashboard/permission/permission";
+$route['dashboard/utility/menu/add'] =  "dashboard/permission/permission/addmenu";
+$route['dashboard/utility/menu/actionadd'] =  "dashboard/permission/permission/actionaddmenu";
+$route['dashboard/utility/menu/delete/(:any)'] =  "dashboard/permission/permission/deletemenu/$1";
+$route['dashboard/utility/menu/add/(:any)/(:any)'] =  "dashboard/permission/permission/action";
+$route['dashboard/utility/roles/add'] =  "dashboard/permission/permission/addmenu";
+$route['dashboard/utility/roles'] =  "dashboard/permission/roles";
+
 $route['dashboard/menus'] = "dashboard/config/menus";
 $route['dashboard/users'] = "dashboard/config/users";
-$route['dashboard/group'] = "dashboard/config/group";
+$route['dashboard/group'] = "dashboard/config/groupc";
 $route['dashboard/roles'] = "dashboard/config/roles";
 $route['dashboard/group'] = "dashboard/config/group";
 $route['dashboard/roles/add'] = "dashboard/config/roles/rolesadd";

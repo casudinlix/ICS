@@ -43,13 +43,16 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo tema()?>js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="<?php echo tema()?>js/bootstrap.min.js"></script>
-
+<script src="<?php echo tema()?>js/jquery.bootstrap-duallistbox.min.js"></script>
 		<!-- page specific plugin scripts -->
-<script src="<?php echo tema()?>js/jquery-2.1.4.min.js"></script>
+ <script src="<?php echo tema();?>auto/js/jquery-ui.min.js"></script>
+ <script src="<?php echo tema();?>auto/js/jquery.lookupbox.js"></script>
+ <script src="<?php echo tema();?>auto/js/jquery.autocomplete.js"></script>
 		<!-- ace scripts -->
 		<script src="<?php echo tema()?>js/ace-elements.min.js"></script>
 		<script src="<?php echo tema()?>js/ace.min.js"></script>
 		<script src="<?php echo tema()?>js/bootstrap.min.js"></script>
+
 
     <script src="<?php echo tema()?>js/jquery-ui.custom.min.js"></script>
     <script src="<?php echo tema()?>js/jquery.dataTables.min.js"></script>
@@ -72,6 +75,7 @@
 	});
 
 </script>
+
 <script>
 function angka(evt) {
 	var charCode = (evt.which) ? evt.which : event.keyCode
@@ -83,14 +87,20 @@ function angka(evt) {
 
 
 </script>
+
 		<script type="text/javascript">
 				var table;
+				var bas_url="<?php echo site_url()?>"
 				$(document).ready(function() {
 
 						//datatables
-						table = $('#datatables').DataTable({});
+						$('#datatables').DataTable({
+							"processing": true,
+						});
+
 
 				});
+
 
 		</script>
 		<?php if ($this->session->flashdata('susscess')): ?>
@@ -103,7 +113,7 @@ function angka(evt) {
 		</script>
 		<?php if ($this->session->flashdata('error')): ?>
 			<script>
-				swal(":( Not Allowed!", "Clicked the button!", "error")
+				swal(":( Not Allowed!", "you do not have permission to enforce this action!!", "error")
 			</script>
 		<?php endif; ?>
 
@@ -136,6 +146,10 @@ function angka(evt) {
 		                var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
 		                var modal          = $(this)
 		                });
+
+
+
+
                 //select2
                 $("#parent").select2({
                  placeholder: 'Choose a Parent...',
@@ -146,8 +160,82 @@ function angka(evt) {
                  placeholder: 'Choose a Group...',
                  allowClear: true
                 });
+				$("#select").select2({
+                 placeholder: 'Choose...',
+                 allowClear: true
+                });
+
 
         });
     </script>
+		<script type="text/javascript">
+		function hapusmenup($d) {
+		var id = $d;
+
+		  swal({
+		title: "Are you sure?",
+		text: "You will not be able to recover this !"+id,
+		type: "warning",
+		showCancelButton: true,
+		closeOnConfirm: false,
+		showLoaderOnConfirm: true
+		},
+
+
+		 function (isConfirm) {
+
+
+
+		    var url1= "<?php echo site_url('dashboard/utility/menu/delete/') ?>";
+
+		      if (!isConfirm) return;
+		      $.ajax({
+		          url: url1+id,
+		          type: "POST",
+
+		          dataType: "HTML",
+		          success: function () {
+		              setTimeout(function () {
+		                  swal(" request finished!");
+		                  window.location.reload();
+		        }, 4000);
+
+
+		          },
+		          error: function (xhr, ajaxOptions, thrownError) {
+		              swal("Error Deleted!", "Please try again", "error");
+		          }
+
+		      });
+
+		});
+		}
+
+		</script>
+		<?php if ($this->session->flashdata("403")): ?>
+			<script>
+			swal("Error!", "you do not have permission to enforce this action!", "error")
+
+			</script>
+		<?php endif; ?>
+		<script>
+		    $(document).ready(function () {
+		      var site = "<?php echo site_url();?>";
+		      $("#searchusers").lookupbox({
+		        title: 'Search Users',
+		        url: site+'dashboard/getusersall/',
+		        imgLoader: 'Loading...',
+		        width: 500,
+		        onItemSelected: function(data){
+		          $('input[name=nip]').val(data.user_nip);
+		          $('input[name=username]').val(data.username);
+							$('input[name=dataid]').val(data.id);
+							$('input[name=groupid]').val(data.group_id);
+
+		        },
+		        tableHeader: ['ID','Nip', 'User Name','Group','Group ID']
+		      });
+		    });
+		    </script>
 	</body>
 </html>

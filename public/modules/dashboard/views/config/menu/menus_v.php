@@ -13,7 +13,7 @@
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
-							
+
 						</div><!-- /.nav-search -->
 					</div>
 <div class="page-header">
@@ -67,10 +67,10 @@
 <td colspan=""><?php  echo $key->menu ?></td>
 <td colspan=""><?php  echo $key->link ?></td>
 <td colspan=""><i class="fa <?php  echo $key->icon ?>"></i></td>
-<?php if ($key->is_publish=1): ?>
-<td colspan="">YES</td>
+<?php if ($key->is_published!=0): ?>
+<td class="info">YES</td>
 <?php else: ?>
-<td colspan="">NO</td>
+<td class="danger">NO</td>
 <?php endif;?>
 <?php if ($module==TRUE): ?>
 <td colspan="">

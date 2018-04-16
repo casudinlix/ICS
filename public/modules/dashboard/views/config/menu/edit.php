@@ -81,7 +81,7 @@
       <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> Menu Order </label>
 
       <div class="col-sm-9">
-        <input type="number" class="col-xs-10 col-sm-5"  name="order" value="<?php echo $q->menu_order?>" />
+        <input type="text" class="col-xs-10 col-sm-5"  name="order" value="<?php echo $q->menu_order?>" onkeypress="return angka(event)"/>
         <span class="help-inline col-xs-12 col-sm-7">
           <label class="middle">
 
@@ -92,9 +92,33 @@
 
     <div class="space-4"></div>
 
+		<div class="form-group">
+			<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> Publish </label>
 
+			<div class="col-sm-9">
+				<select name="a" id="" class="col-xs-5 col-sm-5" required="">
+					<?php if ($q->is_published==1): ?>
+						<option value="<?php echo $q->is_published ?>">YES</option>
 
+					<?php else: ?>
+						<option value="<?php echo $q->is_published ?>">NO</option>
 
+<?php endif;?>
+<?php if ($q->is_published==0): ?>
+	<option value="1">YES</option>
+<?php else: ?>
+<option value="0">NO</option>
+<?php endif?>
+				</select>
+				<span class="help-inline col-xs-12 col-sm-7">
+					<label class="middle">
+
+					</label>
+				</span>
+			</div>
+		</div>
+
+    <div class="space-4"></div>
 
     <div class="form-group">
       <label class="col-sm-3 control-label no-padding-right">Icon</label>

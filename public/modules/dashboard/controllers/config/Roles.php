@@ -82,6 +82,7 @@ $data['title']="Add Roles";
           'roles_desc'=>strtolower($this->input->post('desc')),
           'roles_module'=>strtolower($this->input->post('module')),
           'roles_method'=>$this->input->post('method'),
+          'addBy'=>$this->session->userdata('username')
           ];
     $id = $this->input->post('id');
 

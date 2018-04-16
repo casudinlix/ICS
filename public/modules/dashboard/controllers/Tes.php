@@ -10,10 +10,14 @@ class Tes extends MX_Controller {
 
 	public function index()
 	{
-		echo "tes";
+		echo CI_VERSION;
+
 	}
 	function tes2(){
-		
+
+	}
+	function xx(){
+		echo "ini xx";
 	}
 
 }

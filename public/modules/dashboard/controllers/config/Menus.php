@@ -24,7 +24,7 @@ if ($access==FALSE) {
 }
 $data['title']="Menu List";
 $data['app']=$this->dashboardmodel->getapp();
-	$data['list_menus']=$this->menu->get_all();
+
 $data['add']=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
 $data['module']=$this->access->getaccessupdate($this->session->userdata('nip'))->result();
 $data['menulist']=$this->dashboardmodel->menulist();
@@ -130,7 +130,7 @@ redirect('dashboard/menus');
 				'menu'			=> $this->input->post('menu'),
 				'parent'		=> $this->input->post('parent'),
 				'link'			=> $this->input->post('link'),
-				'is_published'	=> 1,
+				'is_published'	=> $this->input->post('a'),
 				'menu_order'	=> $this->input->post('menu_order'),
 			];
 
