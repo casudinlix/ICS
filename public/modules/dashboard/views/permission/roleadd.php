@@ -2,12 +2,7 @@
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#"><?php echo $this->uri->segment(1)?></a>
-								<i class="ace-icon  arrow fa fa-angle-right"></i>
-								<a href="#"><?php echo $this->uri->segment(2)?></a>
-							</li>
+
 
 
 						</ul><!-- /.breadcrumb -->
@@ -21,14 +16,11 @@
 
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-								<?php if ($add==TRUE): ?>
-								<a href="<?php echo site_url('dashboard/users/add')?>">	<button class="btn btn-white btn-info btn-bold" data-rel="tooltip" data-placement="right" title="New Uers">
-				 												<i class="ace-icon fa fa-plus align-top bigger-125 blue" ></i>
-				 												New
-				 											</button></a>
 
-
-								<?php endif; ?>
+														<a href="javascript:history.back()">
+															<i class="ace-icon fa fa-arrow-left"></i>
+															Go Back
+														</a>
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -72,13 +64,13 @@
 
 <td colspan="">
 	<div class="hidden-sm hidden-xs action-buttons">
-<?php if ($key->group_id!=1): ?>
-  <a href="<?php echo site_url('dashboard/users/edit/').base64_encode($key->id)?>"  class=" tooltip-warning" data-rel="tooltip" data-placement="right" title="Edit">
+
+  <a href="<?php echo site_url('dashboard/utility/roles/add/').str_replace(array('=', '.', '='),array('', '%', '_'),base64_encode($key->id)).'/'.str_replace('=','',base64_encode($key->user_nip))?>"  class=" tooltip-warning" data-rel="tooltip" data-placement="right" title="Add Role Permission">
   <button class="btn btn-white btn-info btn-bold">
-  <i class="ace-icon fa fa-pencil align-top bigger-125 blue"></i>
+  <i class="ace-icon fa fa-unlock align-top bigger-125 blue"></i>
 
        </button></a>
-  <?php endif; ?>
+
 
 </td>
 <?php else:?>

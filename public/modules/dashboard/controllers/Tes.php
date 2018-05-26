@@ -17,7 +17,11 @@ class Tes extends MX_Controller {
 
 	}
 	function xx(){
-		echo "ini xx";
+		$data="123";
+		echo password_hash($data,PASSWORD_DEFAULT). "<br/>";
+
+		var_dump(password_verify("123",$data)) ;
+		 //echo password_hash("gungunpriatna", PASSWORD_DEFAULT)."\n"; 
 	}
 
 }

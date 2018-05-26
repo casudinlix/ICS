@@ -7,6 +7,8 @@
 								<a href="#"><?php echo $this->uri->segment(1)?></a>
 								<i class="ace-icon  arrow fa fa-angle-right"></i>
 								<a href="#"><?php echo $this->uri->segment(2)?></a>
+                <i class="ace-icon  arrow fa fa-angle-right"></i>
+								<a href="#"><?php echo $this->uri->segment(3)?></a>
 							</li>
 
 
@@ -22,7 +24,7 @@
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 								<?php if ($add==TRUE): ?>
-								<a href="<?php echo site_url('dashboard/users/add')?>">	<button class="btn btn-white btn-info btn-bold" data-rel="tooltip" data-placement="right" title="New Uers">
+								<a href="<?php echo site_url('dashboard/utility/roles/add')?>">	<button class="btn btn-white btn-info btn-bold" data-rel="tooltip" data-placement="right" title="New Permission">
 				 												<i class="ace-icon fa fa-plus align-top bigger-125 blue" ></i>
 				 												New
 				 											</button></a>
@@ -38,7 +40,9 @@
 			<!-- PAGE CONTENT BEGINS -->
 
 <div class="tabbable">
- <table id="datatables" class="table table-bordered table-hover">
+	<div>
+
+ <table id="datatables" class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
 										<thead>
 											<tr>
 												<th class="">
@@ -52,9 +56,12 @@
 <th><i class="ace-icon glyphicon glyphicon-user hidden-480"></i>Users Name</th>
 												<th>
 <i class="ace-icon fa fa-users bigger-110 hidden-480"></i>
-						Group Name
+						Roles name
 												</th>
-
+<th>Create</th>
+<th>View</th>
+<th>Update</th>
+<th>Delete</th>
 												<th>Ops</th>
 											</tr>
 										</thead>
@@ -62,29 +69,51 @@
 										<tbody>
 											<tr>
 	 <?php $no=1;
-	 foreach ($userlist as $key): ?>
+	 foreach ($list as $key): ?>
 <td colspan=""><?php  echo $no++ ?></td>
 <td colspan=""><?php  echo $key->user_nip ?></td>
 <td colspan=""><?php  echo $key->username ?></td>
-<td colspan=""><?php  echo $key->group_name ?></td>
+<td colspan=""><?php  echo $key->roles_name ?></td>
+
+<?php if ($key->a_create=='1'): ?>
+<td colspan=""><i class="fa fa-check-square-o "></i></td>
+<?php else: ?>
+  <td colspan=""><i class="glyphicon glyphicon-remove"></i></td>
+<?php endif; ?>
+
+<?php if ($key->a_read=='1'): ?>
+<td colspan=""><i class="fa fa-check-square-o "></i></td>
+<?php else: ?>
+  <td colspan=""><i class="glyphicon glyphicon-remove"></i></td>
+<?php endif; ?>
+<?php if ($key->a_update=='1'): ?>
+<td colspan=""><i class="fa fa-check-square-o "></i></td>
+<?php else: ?>
+  <td colspan=""><i class="glyphicon glyphicon-remove"></i></td>
+<?php endif; ?>
+<?php if ($key->a_delete=='1'): ?>
+<td colspan=""><i class="fa fa-check-square-o "></i></td>
+<?php else: ?>
+  <td colspan=""><i class="glyphicon glyphicon-remove"></i></td>
+<?php endif; ?>
 
 <?php if ($module==TRUE): ?>
 
-<td colspan="">
-	<div class="hidden-sm hidden-xs action-buttons">
-<?php if ($key->group_id!=1): ?>
-  <a href="<?php echo site_url('dashboard/users/edit/').base64_encode($key->id)?>"  class=" tooltip-warning" data-rel="tooltip" data-placement="right" title="Edit">
-  <button class="btn btn-white btn-info btn-bold">
-  <i class="ace-icon fa fa-pencil align-top bigger-125 blue"></i>
+<td class="warning">
 
-       </button></a>
-  <?php endif; ?>
+	<div class="hidden-sm hidden-xs action-buttons">
+<button class="btn btn-white btn-danger btn-bold" onclick="hapusroles_per('<?php echo base64_encode($key->id)?>')" class=" tooltip-warning" data-rel="tooltip" data-placement="right" title="Delete"><i class="ace-icon fa fa-trash align-top bigger-125 blue"></i></button>
 
 </td>
-<?php else:?>
-<td colspan=""></td>
-<?php endif; ?>
+
+
+<?php else: ?>
+<td>
+
+</td>
+<?php endif;?>
 </tr>
+
 											<?php endforeach; ?>
 										</tbody>
 									</table>

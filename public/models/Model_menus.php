@@ -47,7 +47,7 @@ $this->db->select('m.id, m.menu,priv_read as access_module, is_published,CONCAT(
 
         return $result;
     }
-    
+     
 }
 
 /* End of file Model_menus.php */

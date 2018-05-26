@@ -28,6 +28,9 @@ class Dashboardmodel extends CI_Model{
   function get_roles(){
     return $this->db->get('roles')->result();
   }
+  function get_rolesbyuser($nip){
+    return $this->db->get_where('view_role_access',['user_nip'=>$nip]);
+  }
   function getpermenu(){
     return $this->db->get('view_privileges')->result();
   }
@@ -42,5 +45,9 @@ function getmenubyuser($nip){
 function getdetiluser($nip){
   return $this->db->get_where('users_login',['id'=>$nip]);
 }
+function getrolesall(){
+return $this->db->get('view_role_access');
+}
+
 
 }

@@ -161,7 +161,7 @@ function angka(evt) {
                  allowClear: true
                 });
 				$("#select").select2({
-                 placeholder: 'Choose...',
+                 placeholder: '...',
                  allowClear: true
                 });
 
@@ -187,6 +187,94 @@ function angka(evt) {
 
 
 		    var url1= "<?php echo site_url('dashboard/utility/menu/delete/') ?>";
+
+		      if (!isConfirm) return;
+		      $.ajax({
+		          url: url1+id,
+		          type: "POST",
+
+		          dataType: "HTML",
+		          success: function () {
+		              setTimeout(function () {
+		                  swal(" request finished!");
+		                  window.location.reload();
+		        }, 4000);
+
+
+		          },
+		          error: function (xhr, ajaxOptions, thrownError) {
+		              swal("Error Deleted!", "Please try again", "error");
+		          }
+
+		      });
+
+		});
+		}
+
+		</script>
+		<script type="text/javascript">
+		function hapusrolesdetil($d) {
+		var id = $d;
+
+		  swal({
+		title: "Are you sure?",
+		text: "You will not be able to recover this !"+id,
+		type: "warning",
+		showCancelButton: true,
+		closeOnConfirm: false,
+		showLoaderOnConfirm: true
+		},
+
+
+		 function (isConfirm) {
+
+
+
+		    var url1= "<?php echo site_url('dashboard/utility/roles/delete/') ?>";
+
+		      if (!isConfirm) return;
+		      $.ajax({
+		          url: url1+id,
+		          type: "POST",
+
+		          dataType: "HTML",
+		          success: function () {
+		              setTimeout(function () {
+		                  swal(" request finished!");
+		                  window.location.reload();
+		        }, 4000);
+
+
+		          },
+		          error: function (xhr, ajaxOptions, thrownError) {
+		              swal("Error Deleted!", "Please try again", "error");
+		          }
+
+		      });
+
+		});
+		}
+
+		</script>
+		<script type="text/javascript">
+		function hapusroles_per($d) {
+		var id = $d;
+
+		  swal({
+		title: "Are you sure?",
+		text: "You will not be able to recover this !"+id,
+		type: "warning",
+		showCancelButton: true,
+		closeOnConfirm: false,
+		showLoaderOnConfirm: true
+		},
+
+
+		 function (isConfirm) {
+
+
+
+		    var url1= "<?php echo site_url('dashboard/utility/roles/delete/') ?>";
 
 		      if (!isConfirm) return;
 		      $.ajax({

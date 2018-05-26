@@ -13,9 +13,15 @@ $route['dashboard/utility/menu'] =  "dashboard/permission/permission";
 $route['dashboard/utility/menu/add'] =  "dashboard/permission/permission/addmenu";
 $route['dashboard/utility/menu/actionadd'] =  "dashboard/permission/permission/actionaddmenu";
 $route['dashboard/utility/menu/delete/(:any)'] =  "dashboard/permission/permission/deletemenu/$1";
+
 $route['dashboard/utility/menu/add/(:any)/(:any)'] =  "dashboard/permission/permission/action";
 $route['dashboard/utility/roles/add'] =  "dashboard/permission/permission/addmenu";
-$route['dashboard/utility/roles'] =  "dashboard/permission/roles";
+$route['dashboard/utility/roles'] =  "dashboard/permission/roles_perm";
+$route['dashboard/utility/roles/delete/(:any)'] =  "dashboard/permission/roles_perm/deleteroles/$1";
+$route['dashboard/utility/roles/add'] =  "dashboard/permission/roles_perm/addroles_perm";
+$route['dashboard/utility/roles/add/(:any)/(:any)'] =  "dashboard/permission/roles_perm/rolesaction/$1/$1";
+$route['dashboard/utility/roles/actionadd'] =  "dashboard/permission/roles_perm/actionaddroles";
+$route['dashboard/utility/roles/delete/(:any)'] =  "dashboard/permission/roles_perm/hapusroles/$1";
 
 $route['dashboard/menus'] = "dashboard/config/menus";
 $route['dashboard/users'] = "dashboard/config/users";

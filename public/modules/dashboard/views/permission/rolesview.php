@@ -13,7 +13,7 @@
 					</div>
 					<div class="page-header">
 												<h1>
-													List Menu <?php echo $user->username?>
+													List Roles <?php echo $user->username?></h1>
 													<small>
 														<i class="ace-icon fa fa-angle-double-right"></i>
 														<a href="javascript:history.back()">
@@ -24,7 +24,7 @@
 													<div class="col-xs-12 col-sm-4">
 											<div class="widget-box">
 												<div class="widget-header">
-													<h4 class="widget-title">Select Menu</h4>
+													<h4 class="widget-title">Select Roles</h4>
 
 													<span class="widget-toolbar">
 
@@ -44,23 +44,46 @@
 												<div class="widget-body">
 													<div class="widget-main">
 														<div>
-															<label for="form-field-select-1">Default</label>
-<form action="<?php echo site_url('dashboard/utility/menu/actionadd')?>" method="POST">
-															<select class="form-control" id="select" required="true" name="menu_id">
-																<option value=""></option>
+															 
+<form action="<?php echo site_url('dashboard/utility/roles/actionadd')?>" method="POST">
+	 <select class="form-control" id="select" required="true" name="roles_id">
+ <option value=""></option>
 
-																<?php foreach ($menulist as $key): ?>
-																	<option value="<?php echo $key->id ?>"><?php echo $key->id.". ".$key->menu ?></option>
-																<?php endforeach; ?>
-															</select>
-														</div>
-														<input type="hidden" name="user_id" value="<?php echo base64_decode( $this->uri->segment(5))?>">
-														<input type="hidden" name="user_group" value="<?php echo base64_decode( $this->uri->segment(6))?>">
+	 <?php foreach ($list as $key): ?>
+<option value="<?php echo $key->id ?>"><?php echo $key->id.". ".$key->roles_name ?></option>
+<?php endforeach; ?>
+</select>
+</div>
+<input type="hidden" name="user_id" value="<?php echo base64_decode( $this->uri->segment(5))?>">
+<input type="hidden" name="user_nip" value="<?php echo base64_decode( $this->uri->segment(6))?>">
 <button type="submit" class="btn btn-info">Add</button>
-														<hr />
+<div class="checkbox">
+	<label>
+	<input name="view" type="checkbox" class="ace" value="1" />
+<span class="lbl">View</span>
+</label>
+<label>
+	<input name="create" type="checkbox" class="ace" value="1" />
+<span class="lbl">Create</span>
+</label>
+<label>
+<input name="update" type="checkbox" class="ace" value="1" />
+<span class="lbl">Update </span>
+</label>
+<label>
+<input name="delete" type="checkbox" class="ace" value="1" />
+<span class="lbl">Delete</span>
+</label>
+</div>
+ 
+ 
+<hr />
 </form>
-												</h1>
+												 
 											</div><!-- /.page-header -->
+										</div>
+									</div>
+								</div>
 
 	<div class="row">
 		<div class="tabbable">
@@ -82,7 +105,7 @@
 
 
 
-<th>Menu Name</th>
+<th>Roles Name</th>
 
 
 												<th>Ops</th>
@@ -91,17 +114,17 @@
 
 										<tbody>
 											<tr>
-												<?php if ($userlist==true): ?>
+ <?php if ($roles==true): ?>
 													<?php
 $no=1;
-foreach ($userlist as $key): ?>
+foreach ($roles as $key): ?>
 <td colspan=""><?php echo $no++ ?></td>
-<td colspan=""><?php echo $key->menu ?></td>
+<td colspan=""><?php echo $key->roles_name ?></td>
 <?php if ($module==TRUE): ?>
 
 <td colspan="">
 <div class="hidden-sm hidden-xs action-buttons">
-<button class="btn btn-white tooltip-warning btn-danger btn-bold" onclick="hapusmenup('<?php echo base64_encode($key->id)?>')" data-rel="tooltip" data-placement="right" title="Hapus">
+<button class="btn btn-white tooltip-warning btn-danger btn-bold" onclick="hapusrolesdetil('<?php echo base64_encode($key->id)?>')" data-rel="tooltip" data-placement="right" title="Hapus">
 <i class="ace-icon fa fa-trash align-top bigger-125 blue"></i>
 
 </button>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Permission extends CI_Controller{
+class Roles_perm extends MX_Controller{
 
   public function __construct()
   {
@@ -20,50 +20,17 @@ class Permission extends CI_Controller{
     if ($access==FALSE) {
       redirect('forbiden403');
     }
-    $data['title']="Menu Permission";
+    $data['title']="Role Permission";
     $data['app']=$this->dashboardmodel->getapp();
     $data['add']=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
     $data['module']=$this->access->getaccessdelete($this->session->userdata('nip'))->row();
-    $data['list']=$this->dashboardmodel->getjoinmenuper()->result();
+    $data['list']=$this->dashboardmodel->getrolesall()->result();
     $this->load->view('_part/atas',$data);
-      $this->load->view('permission/permission', $data);
+      $this->load->view('permission/roles', $data);
       $this->load->view('_part/bawah', $data);
 
   }
-  function addmenu(){
-    $access=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
-    if ($access==FALSE) {
-      redirect('forbiden403');
-    }
-    $data['title']="Menu Permission";
-    $data['app']=$this->dashboardmodel->getapp();
-    $data['add']=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
-    $data['module']=$this->access->getaccessdelete($this->session->userdata('nip'))->row();
-    $data['list']=$this->dashboardmodel->getjoinmenuper()->result();
-    $data['userlist']=$this->dashboardmodel->getusers();
-    $this->load->view('_part/atas',$data);
-      $this->load->view('permission/add', $data);
-      $this->load->view('_part/bawah', $data);
-
-  }
-  function action(){
-    $access=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
-    if ($access==FALSE) {
-      redirect('forbiden403');
-    }
-    $data['title']="Add Permission";
-    $data['app']=$this->dashboardmodel->getapp();
-    $data['add']=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
-    $data['module']=$this->access->getaccessdelete($this->session->userdata('nip'))->row();
-    $data['list']=$this->dashboardmodel->getjoinmenuper()->result();
-    $data['user']=$this->dashboardmodel->getdetiluser(base64_decode($this->uri->segment(5)))->row();
-    $data['userlist']=$this->dashboardmodel->getmenubyuser(base64_decode($this->uri->segment(5)));
-$data['menulist']=$this->dashboardmodel->menulist();
-    $this->load->view('_part/atas',$data);
-      $this->load->view('permission/view', $data);
-      $this->load->view('_part/bawah', $data);
-  }
-  function deletemenu(){
+  function deleteroles(){
     $access=$this->access->getaccessdelete($this->session->userdata('nip'))->result();
     if ($access==FALSE) {
       show_404();
@@ -71,18 +38,72 @@ $data['menulist']=$this->dashboardmodel->menulist();
 
    $id=base64_decode($this->uri->segment(5));
    $this->db->where('id', $id);
-   $this->db->delete('user_privileges');
-
+   $this->db->delete('roles_rule');
   }
-  function actionaddmenu(){
+  function addroles_perm(){
     $access=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
     if ($access==FALSE) {
       redirect('forbiden403');
     }
-    $data=array('users_login_id'=>$this->input->post('user_id'),'group_id'=>$this->input->post('user_group'),
-  'menu_id'=>$this->input->post('menu_id'),'priv_read'=>'1','addBy'=>$this->session->userdata('username'));
-$this->db->insert('user_privileges', $data);
-  redirect($_SERVER['HTTP_REFERER']);
+
+    $data['title']="Roles List Permission";
+    $data['app']=$this->dashboardmodel->getapp();
+    $data['add']=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
+    $data['module']=$this->access->getaccessdelete($this->session->userdata('nip'))->row();
+    $data['list']=$this->dashboardmodel->getjoinmenuper()->result();
+    $data['userlist']=$this->dashboardmodel->getusers();
+    $this->load->view('_part/atas',$data);
+      $this->load->view('permission/roleadd', $data);
+      $this->load->view('_part/bawah', $data);
+  }
+  function rolesaction(){
+    $access=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
+    if ($access==FALSE) {
+      redirect('forbiden403');
+    }
+    $data['title']="New Roles";
+    $data['app']=$this->dashboardmodel->getapp();
+    $data['add']=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
+    $data['module']=$this->access->getaccessdelete($this->session->userdata('nip'))->row();
+    $data['list']=$this->dashboardmodel->get_roles();
+    $data['user']=$this->dashboardmodel->getdetiluser(base64_decode($this->uri->segment(5)))->row();
+    $data['roles']=$this->dashboardmodel->get_rolesbyuser(base64_decode($this->uri->segment(6)))->result();
+    $this->load->view('_part/atas',$data);
+      $this->load->view('permission/rolesview', $data);
+      $this->load->view('_part/bawah', $data);
+
+
+  }
+  function actionaddroles(){
+    $access=$this->access->getaccesscreate($this->session->userdata('nip'))->result();
+    if ($access==FALSE) {
+      redirect('forbiden403');
+    }
+
+    $data=array('roles_id'=>$this->input->post('roles_id', TRUE),
+      'users_login_id'=>$this->input->post('user_id', TRUE),
+      'a_read'=>$this->input->post('view', TRUE),
+      'a_create'=>$this->input->post('create', TRUE),
+      'a_update'=>$this->input->post('update', TRUE),
+      'a_delete'=>$this->input->post('delete', TRUE),
+      'createby'=>$this->session->userdata('username'));
+    $this->db->insert('roles_rule', $data);
+    $this->session->set_flashdata('susscess', 'value');
+    redirect($_SERVER['HTTP_REFERER']);
+
+    
+
+  }
+  function hapusroles(){
+    $access=$this->access->getaccessdelete($this->session->userdata('nip'))->result();
+    if ($access==FALSE) {
+      redirect('forbiden403');
+    }
+
+   $id=base64_decode($this->uri->segment(5));
+   $this->db->where('id', $id);
+   $this->db->delete('roles_rule');
+
   }
 
 }
